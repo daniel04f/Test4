@@ -1,5 +1,7 @@
 package pl.kurs.test4.task1;
 
+import java.util.Collections;
+
 public class Runner {
     public static void main(String[] args) {
         Ubranie u1 = new Ubranie("Koszula", Ubranie.Rozmiar.L, 299.0);
@@ -16,5 +18,15 @@ public class Runner {
         for (Ubranie u : szafa) {
             System.out.println(u.getNazwa() + " - " + u.getRozmiar() + " - " + u.getCena());
         }
+
+        System.out.println("\nNajwiększe ubranie w szafie: ");
+        Ubranie najwieksze = Collections.max(szafa.getUbrania()); // ma zwrocic najwieksze ubranie
+        System.out.println(najwieksze);
+
+        Ubranie.ustalKryteriumSortowania(Ubranie.Kryterium.WARTOSC);
+
+        System.out.println("\nNajdroższe ubranie w szafie: ");
+        Ubranie najdrozsze = Collections.max(szafa.getUbrania()); // teraz po zmianie kryterium sotowania ma zwrocic najdrozsze ubranie
+        System.out.println(najdrozsze);
     }
 }
