@@ -11,5 +11,10 @@ public class Runner {
         szafa.dodajUbranie();
         szafa.dodajUbranie(u1, u2);
         szafa.dodajUbranie(u1, u2, u3, u4);
+
+        System.out.println("\nWszystkie ubrania w szafie: ");
+        for (Ubranie u : szafa) {
+            System.out.println(u.getNazwa() + " - " + u.getRozmiar() + " - " + u.getCena());
+        }
     }
 }
