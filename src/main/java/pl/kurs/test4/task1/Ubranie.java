@@ -19,4 +19,31 @@ public class Ubranie {
         ROZMIAR,
         WARTOSC
     }
+
+    public Ubranie(String nazwa, Rozmiar rozmiar, double cena) {
+        this.nazwa = nazwa;
+        this.rozmiar = rozmiar;
+        this.cena = cena;
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public Rozmiar getRozmiar() {
+        return rozmiar;
+    }
+
+    public double getCena() {
+        return cena;
+    }
+
+    @Override
+    public String toString() {
+        return "Ubranie{" +
+                "nazwa='" + nazwa + '\'' +
+                ", rozmiar=" + rozmiar +
+                ", cena=" + cena +
+                '}';
+    }
 }
