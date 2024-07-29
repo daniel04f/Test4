@@ -23,4 +23,15 @@ public class PersonService {
                 .orElse(0);
     }
 
+    public static double getAvgMenAge(List<Person> people) {
+        return Optional.ofNullable(people)
+                .orElseGet(Collections::emptyList)
+                .stream()
+                .filter(Objects::nonNull)
+                .filter(x -> !x.isWoman())
+                .mapToInt(Person::getAge)
+                .average()
+                .orElse(0);
+    }
+
 }
