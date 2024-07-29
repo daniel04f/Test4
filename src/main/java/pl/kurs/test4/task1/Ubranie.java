@@ -1,6 +1,8 @@
 package pl.kurs.test4.task1;
 
-public class Ubranie {
+import java.util.Comparator;
+
+public class Ubranie implements Comparable<Ubranie> {
     private String nazwa;
     private Rozmiar rozmiar;
     private double cena;
@@ -45,5 +47,21 @@ public class Ubranie {
                 ", rozmiar=" + rozmiar +
                 ", cena=" + cena +
                 '}';
+    }
+
+    public static void ustalKryteriumSortowania(Kryterium kryterium) {
+        kryteriumSortowania = kryterium;
+    }
+
+    @Override
+    public int compareTo(Ubranie o) {
+        return getComparator().compare(this, o);
+    }
+
+    public static Comparator<Ubranie> getComparator() {
+        return switch (kryteriumSortowania) {
+            case WARTOSC -> Comparator.comparingDouble(Ubranie::getCena);
+            case ROZMIAR -> Comparator.comparing(Ubranie::getRozmiar);
+        };
     }
 }
