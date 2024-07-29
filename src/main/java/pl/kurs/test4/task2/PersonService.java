@@ -1,6 +1,7 @@
 package pl.kurs.test4.task2;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class PersonService {
     public static Person getTheOldestWomen(List<Person> people) throws NoWomenException {
@@ -45,4 +46,14 @@ public class PersonService {
                 .orElse(0);
     }
 
+    public static double getAvgAgeForSpecificGender(List<Person> people, Predicate<Person> predicate) {
+        return Optional.ofNullable(people)
+                .orElseGet(Collections::emptyList)
+                .stream()
+                .filter(Objects::nonNull)
+                .filter(predicate)
+                .mapToInt(Person::getAge)
+                .average()
+                .orElse(0);
+    }
 }
