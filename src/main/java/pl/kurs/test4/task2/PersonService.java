@@ -34,4 +34,15 @@ public class PersonService {
                 .orElse(0);
     }
 
+    public static double getAvgWomanAge(List<Person> people) {
+        return Optional.ofNullable(people)
+                .orElseGet(Collections::emptyList)
+                .stream()
+                .filter(Objects::nonNull)
+                .filter(Person::isWoman)
+                .mapToInt(Person::getAge)
+                .average()
+                .orElse(0);
+    }
+
 }
