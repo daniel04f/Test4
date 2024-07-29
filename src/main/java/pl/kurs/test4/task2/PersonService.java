@@ -12,4 +12,15 @@ public class PersonService {
                 .max(Comparator.comparingInt(Person::getAge))
                 .orElseThrow(() -> new NoWomenException("Nie znaleziono żadnej kobiety na liście"));
     }
+
+    public static double getAvgPersonsAge(List<Person> people) {
+        return Optional.ofNullable(people)
+                .orElseGet(Collections::emptyList)
+                .stream()
+                .filter(Objects::nonNull)
+                .mapToInt(Person::getAge)
+                .average()
+                .orElse(0);
+    }
+
 }
