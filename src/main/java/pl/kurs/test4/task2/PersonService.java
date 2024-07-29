@@ -71,4 +71,14 @@ public class PersonService {
                 .map(Map.Entry::getKey)
                 .orElse("");
     }
+
+    public static Set<String> findUniqueCities(List<Person> people) {
+        return Optional.ofNullable(people)
+                .orElseGet(Collections::emptyList)
+                .stream()
+                .filter(Objects::nonNull)
+                .map(Person::getCity)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
+    }
 }
